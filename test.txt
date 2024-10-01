@@ -1,0 +1,15 @@
+Jenkins:
+
+User name: Adil
+paswd: Adil@1234
+
+dockerhub
+
+user madilad
+paswd: Adil@1234
+
+
+amentotech
+amentotech
+
+&*^mt101AM786
