@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+  # Frontend Service
+  frontend:
+    image: madilad/assignment_fe  # Use the Docker Hub image for frontend
+    container_name: react-frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    networks:
+      - app-network
+
+  # Backend Service (Node.js)
+  backend:
+    image: madilad/assignment_be  # Use the Docker Hub image for backend
+    container_name: node-backend
+    ports:
+      - "4000:4000"
+    depends_on:
+      - mongo
+    networks:
+      - app-network
+    environment:
+      - MONGO_URL=mongodb://mongo:27017/todo-app
+
+  # MongoDB Service
+  mongo:
+    image: mongo:4.4
+    container_name: mongo-db
+    ports:
+      - "27017:27017"
+    networks:
+      - app-network
+    volumes:
+      - mongo-data:/data/db
+
+# Define shared network
+networks:
+  app-network:
+    driver: bridge
+
+# Persistent MongoDB Data
+volumes:
+  mongo-data:
