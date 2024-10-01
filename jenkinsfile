@@ -12,6 +12,14 @@ pipeline {
                 }
             }
         }
+        stage('Run test cases') {
+            steps {
+                script {
+                    // Run test cases as well as add sonar cloud
+                  sh 'echo Test cases run here'
+                }
+            }
+        }
         stage('Build and push Docker image Frontend') {
             steps {
                 script {
