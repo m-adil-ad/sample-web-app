@@ -1,0 +1,24 @@
+pipeline {
+  agent any
+
+  stages {
+    stage('Clone Repository') {
+        steps {
+                script {
+                    // Clone the Git repository
+                   git branch: 'main', credentialsId: 'github', url: 'https://github.com/m-adil-ad/sample-web-app'
+                }
+            }
+        }
+    stage('Deploy On localhost') {
+      steps {
+        sh '''
+          echo "Hello, localhost!"
+          docker compose down
+          cd prod
+          docker compose up --build -d
+        '''
+      }
+    }
+  }
+}
