@@ -8,8 +8,3 @@ dockerhub
 user madilad
 paswd: Adil@1234
 
-
-amentotech
-amentotech
-
-&*^mt101AM786
